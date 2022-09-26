@@ -6,4 +6,9 @@ export interface DatabaseConfigAttr {
   database: string;
   type: string;
   synchronize: boolean;
+  autoLoadEntities: boolean;
+  logging: boolean;
+  entities?: string[];
+  migrations?: string[];
+  cli: object;
 }
