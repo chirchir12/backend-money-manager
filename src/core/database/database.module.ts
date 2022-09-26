@@ -11,7 +11,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       useFactory(configService: ConfigService) {
         return Object.assign(
           {},
-          configService.get('databaseConfig'),
+          configService.get('mainDBConfig'),
           {}, // more config
         );
       },

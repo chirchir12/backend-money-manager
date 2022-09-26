@@ -3,7 +3,7 @@ import * as dotenv from 'dotenv';
 import { DEVELOPMENT, PRODUCTION, TEST } from './constants.config';
 
 dotenv.config();
-export default (env: any): DatabaseConfigAttr => {
+const dbConfigFun = (env: any): DatabaseConfigAttr => {
   switch (env) {
     case DEVELOPMENT:
       return {
@@ -58,3 +58,5 @@ export default (env: any): DatabaseConfigAttr => {
       };
   }
 };
+
+export const mainDBConfig = dbConfigFun(process.env.NODE_ENV || 'dev');

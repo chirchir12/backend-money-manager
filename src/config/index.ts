@@ -1,8 +1,7 @@
-import * as dotenv from 'dotenv';
-import databaseConfig from './database.config';
+import { mainDBConfig } from './mainDB.config';
 
-dotenv.config();
+// do validations
 
 export default () => ({
-  databaseConfig: databaseConfig(process.env.NODE_ENV || 'dev'),
+  mainDBConfig,
 });

@@ -1,9 +1,4 @@
 import fs = require('fs');
-import * as dotenv from 'dotenv';
-import databaseConfig from '../config/database.config';
+import { mainDBConfig } from '../config/mainDB.config';
 
-dotenv.config();
-fs.writeFileSync(
-  'ormconfig.json',
-  JSON.stringify(databaseConfig(process.env.NODE_ENV || 'dev'), null, 2),
-);
+fs.writeFileSync('ormconfig.json', JSON.stringify(mainDBConfig, null, 2));
