@@ -16,8 +16,8 @@ export default (env: any): DatabaseConfigAttr => {
         type: process.env.DIALECT || 'postgres',
         logging: true,
         autoLoadEntities: true,
-        entities: ['dist/src/**/*.js'],
-        migrations: ['dist/src/db/migrations/*.js'],
+        entities: ['**/*.entity{.ts, .js}'],
+        migrations: ['src/db/migration/*.ts'],
         cli: {
           migrationsDir: 'src/db/migrations',
         },
@@ -33,7 +33,7 @@ export default (env: any): DatabaseConfigAttr => {
         type: process.env.DIALECT || 'postgres',
         logging: true,
         autoLoadEntities: true,
-        entities: ['dist/src/**/*.js'],
+        entities: ['**/*.entity{.ts, .js}'],
         migrations: ['dist/src/db/migrations/*.js'],
         cli: {
           migrationsDir: 'src/db/migrations',
@@ -50,7 +50,7 @@ export default (env: any): DatabaseConfigAttr => {
         type: process.env.DIALECT || 'postgres',
         logging: true,
         autoLoadEntities: true,
-        entities: ['dist/src/**/*.js'],
+        entities: ['**/*.entity{.ts, .js}'],
         migrations: ['dist/src/db/migrations/*.js'],
         cli: {
           migrationsDir: 'src/db/migrations',
