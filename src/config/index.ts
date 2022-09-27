@@ -1,4 +1,4 @@
-import { mainDBConfig } from './mainDB.config';
+import { mainDBConfig } from '../core/database/config/mainDB.config';
 
 // do validations
 

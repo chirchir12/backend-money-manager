@@ -1,6 +1,6 @@
-import { DatabaseConfigAttr } from './interfaces/database.interface';
+import { DatabaseConfigAttr } from '../interfaces/database.interface';
 import * as dotenv from 'dotenv';
-import { DEVELOPMENT, PRODUCTION, TEST } from './constants.config';
+import { DEVELOPMENT, PRODUCTION, TEST } from '../constants/constants.config';
 
 dotenv.config();
 const dbConfigFun = (env: any): DatabaseConfigAttr => {
