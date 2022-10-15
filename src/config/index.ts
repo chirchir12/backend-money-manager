@@ -1,7 +1,7 @@
-import { mainDBConfig } from '../core/database/config/mainDB.config';
+import { DbConnection } from '../database/config';
 
 // do validations
 
 export default () => ({
-  mainDBConfig,
+  DbConnection,
 });
