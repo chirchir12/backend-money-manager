@@ -21,7 +21,7 @@ export const DbConnection: DataSourceOptions = {
   host: envVars.DB_HOST,
   port: envVars.DB_PORT,
   entities: ['dist/**/*.entity.js'],
-  migrations: ['dist/db/migrations/*.js'],
+  migrations: ['dist/database/migrations/*.js'],
 };
 
 // for typeorm migration
