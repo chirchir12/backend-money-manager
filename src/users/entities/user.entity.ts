@@ -2,9 +2,11 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { Income } from '../../income/entities/income.entity';
 
 @Entity()
 export class User {
@@ -40,4 +42,10 @@ export class User {
 
   @Column({ type: 'varchar', length: 300 })
   createdBy: string;
+
+  @OneToMany(() => Income, (income) => income.actorId, {
+    onDelete: 'CASCADE',
+    onUpdate: 'NO ACTION',
+  })
+  incomes: Income[];
 }

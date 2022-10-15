@@ -9,6 +9,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import config from './config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
+import { IncomeModule } from './income/income.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { DataSource } from 'typeorm';
     UsersModule,
     AuthModule,
     LoggingModule,
+    IncomeModule,
   ],
   controllers: [AppController],
   providers: [AppService],
