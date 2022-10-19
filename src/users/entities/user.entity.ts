@@ -35,7 +35,7 @@ export class User {
   @Column({ nullable: true, unique: true, length: 13 })
   phone: string;
 
-  @Column()
+  @Column({ nullable: true })
   salt: string;
 
   @Column()
@@ -47,7 +47,7 @@ export class User {
   @UpdateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
   updatedAt: Date;
 
-  @Column({ type: 'varchar', length: 300 })
+  @Column({ type: 'varchar', length: 300, nullable: true })
   createdBy: string;
 
   @OneToMany(() => Income, (income) => income.actorId, {
