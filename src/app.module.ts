@@ -10,6 +10,7 @@ import config from './config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { IncomeModule } from './income/income.module';
+import { ExpenseModule } from './expense/expense.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { IncomeModule } from './income/income.module';
     AuthModule,
     LoggingModule,
     IncomeModule,
+    ExpenseModule,
   ],
   controllers: [AppController],
   providers: [AppService],

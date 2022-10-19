@@ -6,6 +6,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { Expense } from '../../expense/entities/expense.entity';
 import { Income } from '../../income/entities/income.entity';
 
 @Entity()
@@ -19,13 +20,19 @@ export class User {
   @Column({ type: 'boolean', default: false })
   isArchived: boolean;
 
-  @Column()
+  @Column({ unique: true })
   username: string;
 
   @Column()
-  email: string;
+  firstname: string;
 
   @Column()
+  lastname: string;
+
+  @Column({ unique: true })
+  email: string;
+
+  @Column({ nullable: true, unique: true, length: 13 })
   phone: string;
 
   @Column()
@@ -48,4 +55,10 @@ export class User {
     onUpdate: 'NO ACTION',
   })
   incomes: Income[];
+
+  @OneToMany(() => Expense, (expense) => expense.actorId, {
+    onDelete: 'CASCADE',
+    onUpdate: 'NO ACTION',
+  })
+  expenses: Expense[];
 }
