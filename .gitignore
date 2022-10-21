@@ -37,3 +37,4 @@ lerna-debug.log*
 requirements.txt
 *.env
 ormconfig.json
+.env
