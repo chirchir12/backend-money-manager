@@ -1,5 +1,4 @@
 import * as Joi from 'joi';
-import { DatabaseConfigAttr } from '../interfaces/database.interface';
 
 export const validateDBConfig = Joi.object({
   DB_HOST: Joi.string().required(),
