@@ -4,6 +4,7 @@ export class RegisterDto {
   readonly firstname: string;
   readonly lastname: string;
   readonly phone: string;
+  readonly password: string;
 }
 
 export class LoginDto {

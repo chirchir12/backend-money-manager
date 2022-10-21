@@ -20,6 +20,7 @@ export class JWTStrategy extends PassportStrategy(Strategy) {
   async validate(payload: any) {
     // check if token actually exist
     const user = await this.userService.findById(payload.id);
+
     if (!user) {
       throw new UnauthorizedException(
         'you are not authorized to perform this operation',

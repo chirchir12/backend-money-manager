@@ -16,7 +16,10 @@ export class UsersService {
     return 'this is all';
   }
   async create(user: UserDTO): Promise<User> {
-    return this.userRepository.create(user);
+    const newuser = await this.userRepository.save(user);
+    delete newuser.hash;
+    delete newuser.salt;
+    return newuser;
   }
 
   async findOneByEmail(email: string): Promise<User> {
