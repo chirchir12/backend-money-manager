@@ -24,7 +24,7 @@ export class IncomeService {
       skip,
     });
 
-    if (!total || total > 0) {
+    if (!total || total === 0) {
       throw new NotFoundException('Not found');
     }
 
