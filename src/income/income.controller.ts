@@ -27,7 +27,6 @@ export class IncomeController {
 
   @Get()
   findAll(@Query() query) {
-    console.log(query);
     return this.incomeService.findAll(query);
   }
 
