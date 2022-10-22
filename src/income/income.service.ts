@@ -20,6 +20,7 @@ export class IncomeService {
     const page: number = +query.pageNumber || 1;
     const skip = (page - 1) * take;
     const [result, total] = await this.incomeRepository.findAndCount({
+      order: { date: 'DESC' },
       take,
       skip,
     });
@@ -34,7 +35,7 @@ export class IncomeService {
         pageNumber: page,
         pageSize: take,
         recordTotal: total,
-        pagesTotal: Math.round(total / take),
+        pagesTotal: Math.ceil(total / take),
       },
     };
   }
