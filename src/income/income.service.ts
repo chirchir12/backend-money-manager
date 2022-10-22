@@ -1,11 +1,18 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateIncomeDto } from './dto/create-income.dto';
 import { UpdateIncomeDto } from './dto/update-income.dto';
+import { Income } from './entities/income.entity';
 
 @Injectable()
 export class IncomeService {
-  create(createIncomeDto: CreateIncomeDto) {
-    return 'This action adds a new income';
+  constructor(
+    @InjectRepository(Income)
+    private readonly incomeRepository: Repository<Income>,
+  ) {}
+  create(createIncomeDto: CreateIncomeDto, userId) {
+    return this.incomeRepository.save({ ...createIncomeDto, actorId: userId });
   }
 
   findAll() {
@@ -18,9 +25,5 @@ export class IncomeService {
 
   update(id: number, updateIncomeDto: UpdateIncomeDto) {
     return `This action updates a #${id} income`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} income`;
   }
 }

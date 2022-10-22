@@ -1,15 +1,27 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  UseGuards,
+  Request,
+} from '@nestjs/common';
 import { IncomeService } from './income.service';
 import { CreateIncomeDto } from './dto/create-income.dto';
 import { UpdateIncomeDto } from './dto/update-income.dto';
+import { AuthGuard } from '@nestjs/passport';
 
+@UseGuards(AuthGuard('jwt'))
 @Controller('income')
 export class IncomeController {
   constructor(private readonly incomeService: IncomeService) {}
 
   @Post()
-  create(@Body() createIncomeDto: CreateIncomeDto) {
-    return this.incomeService.create(createIncomeDto);
+  create(@Body() createIncomeDto: CreateIncomeDto, @Request() req) {
+    return this.incomeService.create(createIncomeDto, req.user.id);
   }
 
   @Get()
@@ -25,10 +37,5 @@ export class IncomeController {
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateIncomeDto: UpdateIncomeDto) {
     return this.incomeService.update(+id, updateIncomeDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.incomeService.remove(+id);
   }
 }
