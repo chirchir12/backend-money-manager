@@ -35,7 +35,6 @@ export class AuthService {
   }
 
   public async login(user: any) {
-    console.log(user);
     const token = await this.generateToken({ ...user });
     return {
       user,
