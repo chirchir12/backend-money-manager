@@ -35,4 +35,10 @@ export class UsersService {
       where: [{ email: value }, { username: value }],
     });
   }
+
+  async checkUserExist(email: string, username: string, phone: string) {
+    return this.userRepository.findOne({
+      where: [{ email }, { username }, { phone }],
+    });
+  }
 }
