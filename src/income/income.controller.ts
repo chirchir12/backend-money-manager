@@ -8,6 +8,7 @@ import {
   Delete,
   UseGuards,
   Request,
+  Query,
 } from '@nestjs/common';
 import { IncomeService } from './income.service';
 import { CreateIncomeDto } from './dto/create-income.dto';
@@ -25,8 +26,9 @@ export class IncomeController {
   }
 
   @Get()
-  findAll() {
-    return this.incomeService.findAll();
+  findAll(@Query() query) {
+    console.log(query);
+    return this.incomeService.findAll(query);
   }
 
   @Get(':id')

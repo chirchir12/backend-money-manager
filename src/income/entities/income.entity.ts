@@ -27,6 +27,9 @@ export class Income {
   @Column({ nullable: true })
   comment: string;
 
-  @CreateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
+  @CreateDateColumn({ type: 'date', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;
+
+  @Column({ nullable: true, default: new Date(), type: 'date' })
+  date: Date; // when the income was received
 }

@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber } from 'class-validator';
+import { IsDate, IsDateString, IsNotEmpty, IsNumber } from 'class-validator';
 
 export class CreateIncomeDto {
   @IsNumber()
@@ -10,4 +10,7 @@ export class CreateIncomeDto {
 
   @IsNotEmpty()
   comment: string;
+
+  @IsDateString()
+  date: Date;
 }
