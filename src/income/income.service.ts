@@ -48,7 +48,13 @@ export class IncomeService {
     return income;
   }
 
-  update(id: number, updateIncomeDto: UpdateIncomeDto) {
-    return `This action updates a #${id} income`;
+  async update(id: number, updateIncomeDto: UpdateIncomeDto) {
+    try {
+      const income = await this.findOne(id);
+      const updatedIncome = Object.assign({}, { ...income }, updateIncomeDto);
+      return await this.incomeRepository.save(updatedIncome);
+    } catch (error) {
+      throw error;
+    }
   }
 }
