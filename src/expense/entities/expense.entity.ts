@@ -5,7 +5,8 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Category } from '../../core/entities/categories.entity';
+import { Category } from '../../shared/categories/entities/category.entity';
+
 import { User } from '../../users/entities/user.entity';
 
 @Entity()
@@ -33,4 +34,7 @@ export class Expense {
 
   @Column({ nullable: true })
   comment: string;
+
+  @Column({ nullable: true, default: new Date(), type: 'date' })
+  date: Date; // when the expense was received
 }
