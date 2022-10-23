@@ -40,8 +40,12 @@ export class IncomeService {
     };
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} income`;
+  async findOne(id: number): Promise<Income> {
+    const income = await this.incomeRepository.findOne({ where: { id } });
+    if (!income) {
+      throw new NotFoundException('Not found');
+    }
+    return income;
   }
 
   update(id: number, updateIncomeDto: UpdateIncomeDto) {
