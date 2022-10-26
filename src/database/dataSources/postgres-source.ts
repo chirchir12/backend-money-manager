@@ -1,6 +1,10 @@
 import { DataSource, DataSourceOptions } from 'typeorm';
 import * as dotenv from 'dotenv';
 import { validateDBConfig } from '../validations';
+import { Income } from '../../income/entities/income.entity';
+import { User } from '../../users/entities/user.entity';
+import { Expense } from '../../expense/entities/expense.entity';
+import { Category } from '../../shared/categories/entities/category.entity';
 
 dotenv.config();
 
@@ -20,7 +24,7 @@ export const DbConnection: DataSourceOptions = {
   password: envVars.DB_PASS,
   host: envVars.DB_HOST,
   port: envVars.DB_PORT,
-  entities: ['dist/**/*.entity.js'],
+  entities: [Income, User, Expense, Category],
   migrations: ['dist/database/migrations/*.js'],
 };
 
