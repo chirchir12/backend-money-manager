@@ -21,12 +21,11 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "typeorm": "npm run build && npx typeorm -d dist/database/dataSources/postgres-source.js",
     "erd:diagram": "npm run build && rimraf table.pdf entity.pdf && erdia pdf -d dist/database/dataSources/postgres-source.js -o table.pdf -o entity.pdf",
-    "seed": "npm run build && ts-node ./node_modules/typeorm-extension/dist/cli/index.js -f dist/database/dataSources/postgres-seeder.js seed",
     "migration:generate": "npm run typeorm -- migration:generate",
     "migration:run": "npm run typeorm -- migration:run",
     "migration:revert": "npm run typeorm -- migration:revert",
     "seed:config": "ts-node ./node_modules/typeorm-seeding/dist/cli.js config -n src/database/dataSources/postgres-seeder.ts",
-    "seed:run": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed -n src/database/dataSources/postgres-seeder.ts"
+    "seed:run": "NODE_ENV=seeding ts-node ./node_modules/typeorm-seeding/dist/cli.js seed -n src/database/dataSources/postgres-seeder.ts"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",

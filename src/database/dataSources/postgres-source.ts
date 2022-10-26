@@ -20,7 +20,11 @@ export const DbConnection: DataSourceOptions = {
   password: envVars.DB_PASS,
   host: envVars.DB_HOST,
   port: envVars.DB_PORT,
-  entities: ['dist/**/*.entity.js'],
+  entities: [
+    process.env.NODE_ENV === 'seeding'
+      ? 'src/**/*.entity.ts'
+      : 'dist/**/*.entity.js',
+  ],
   migrations: ['dist/database/migrations/*.js'],
 };
 
